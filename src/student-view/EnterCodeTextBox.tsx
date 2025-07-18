@@ -4,8 +4,8 @@ import { useAsyncValue } from 'react-router-dom';
 export default function() {
     const [text, setText] = useState<string>("");
 
-    function keyPressed(e: { target: { value: SetStateAction<string>; }; }) {
-        const desiredText : SetStateAction<string> = e.target.value;
+    function keyPressed(e: React.ChangeEvent<HTMLInputElement>) {
+        const desiredText = e.target.value;
         
 
         // Codes should be no longer than 6 characters
@@ -24,11 +24,8 @@ export default function() {
                 console.error(`Server error: ${res.status}`);
             }
 
-            if (res.status >= 300 && res.status < 400) {
-
-                // the status code will automaticlaly redirect the user to the correct room,
-                // so no more frontend needed for this component
-
+            if (res.redirected) {
+                window.location.href = res.url;
             }
 
         } catch (err : any) {
@@ -41,7 +38,7 @@ export default function() {
     return (
         <div>
             <input className="flex gap-2 bg-gray-600 rounded-lg" value={text} onChange={keyPressed} />
-            <button onClick = {codeSubmitted}>
+            <button onClick = {codeSubmitted} disabled={text.length !== 6} >
                 JOIN ROOM!
             </button>
         </div>
