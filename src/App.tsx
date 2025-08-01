@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 import './FirstComponent'
-import { Welcome, WelcomeButton } from './FirstComponent'
 
 function App() {
   return (

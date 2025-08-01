@@ -1,15 +1,14 @@
 import { JSX } from "react";
-import { useNavigate } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 interface NavButtonProps {
     text: string;
     selected: boolean;
-    onClick: () => void;
 }
 
-export default function NavButton({ text, selected, onClick } : NavButtonProps): JSX.Element {
+export default function NavButton({ text, selected } : NavButtonProps): JSX.Element {
     return (
-      <button
+      <NavLink
         style = {{
             color: selected ? "blue" : "black",
             fontFamily: 'Nunito Sans, cursive',
@@ -17,9 +16,9 @@ export default function NavButton({ text, selected, onClick } : NavButtonProps):
             fontSize: '20px',
             textDecoration: selected ? 'underline' : ''
         }}
-        onClick={onClick}
+        to={`/${text.toLowerCase().replace(' ', '')}`}
         >
           {text}
-          </button>
+        </NavLink>
     );
 }

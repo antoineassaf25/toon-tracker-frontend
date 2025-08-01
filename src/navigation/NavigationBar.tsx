@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useLocation } from 'react-router-dom';
 import NavButton from "./NavButton";
 
 const TABS = ["Search", "Saved Toons", "About"]
 
 export default function() {
-    const [ selectedTab, setSelectedTab ] = useState(TABS[0]);
+    const location = useLocation();
+    const currentPath = location.pathname.toLowerCase().split('/')[1] || '';
 
     return(
         <div style={{
@@ -33,9 +34,8 @@ export default function() {
                 {TABS.map((label) => (
                     <li key={label}>
                         <NavButton
-                        selected = {selectedTab == label}
-                        text={label}
-                        onClick = {() => setSelectedTab(label)}/>
+                        selected = {currentPath == label.toLowerCase().replace(' ', '')}
+                        text={label}/>
                     </li>
                 ))}
             </ul>

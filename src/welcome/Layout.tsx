@@ -1,9 +1,12 @@
-import { setMaxIdleHTTPParsers } from "http";
 import { useEffect, useState } from "react";
-import NavigationBar from "../NavigationBar";
-import bgImage from "./ttc-background.webp";
+import NavigationBar from "../navigation/NavigationBar";
+import bgImage from "../assets/ttc-background.webp";
 
-export function Welcome() {
+interface Props {
+  children: React.ReactNode
+}
+
+export function Layout( { children } : Props ) {
   const [ blurSize, setBlurSize ] = useState(0);
 
   useEffect(() => {
@@ -22,6 +25,7 @@ export function Welcome() {
         overflow: 'hidden'
       }}
     >
+      {/* Background Layer */}
       <div
         style={{
           backgroundImage: `url(${bgImage})`,
@@ -34,10 +38,26 @@ export function Welcome() {
           left: 0,
           right: 0,
           bottom: 0,
+          zIndex: 0
         }}
       />
-      <div>
+
+      {/* Navigation Bar Layer */}
+      <div style={{ position: 'relative', zIndex: 2 }}>
         <NavigationBar />
+      </div>
+
+      {/* Page Content Layer */}
+      <div style={{
+        position: 'relative',
+        zIndex: 1,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 'calc(100vh - 60px)',
+        marginTop: '60px'
+        }}>
+        {children}
       </div>
     </main>
   );
