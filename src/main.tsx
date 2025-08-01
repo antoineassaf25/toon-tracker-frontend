@@ -7,7 +7,7 @@ import NotFoundPage from './NotFoundPage'
 import Profile from './Profile'
 
 
-import Search from './search/Search'
+import { Search } from './search/Search'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import SavedToons from './savedtoons/SavedToons'

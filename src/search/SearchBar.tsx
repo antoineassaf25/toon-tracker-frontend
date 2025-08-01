@@ -5,7 +5,7 @@ interface SearchBarProps {
     updateToons: (prefix:string) => void;
 }
 
-export function SearchBar( { updateToons } : SearchBarProps ) {
+export default function SearchBar( { updateToons } : SearchBarProps ) {
     const [ currentInput, setCurrentInput ] = useState("")
 
     return (
@@ -28,12 +28,16 @@ export function SearchBar( { updateToons } : SearchBarProps ) {
             style = {{
                 background: "white"
             }}
-            value={currentInput}
-            onChange={(e) => {setCurrentInput(e.target.value)}}
-            onKeyDown={(e) => {
-                updateToons(currentInput)
-                //if (e.key === 'Enter') updateToons(currentInput);
-            }}
+            onChange={(e) => {
+                console.log("updateToons prop:", updateToons);
+                setCurrentInput(e.target.value);
+                updateToons(e.target.value);
+            }} //{setCurrentInput(e.target.value)}}
+            // onKeyDown={(e) => {
+            //     setCurrentInput(e.target.value)
+            //     updateToons(currentInput)
+            //     //if (e.key === 'Enter') updateToons(currentInput);
+            // }}
             >
             </input>
             <button

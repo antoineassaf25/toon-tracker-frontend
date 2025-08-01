@@ -1,10 +1,9 @@
-import { SearchBar } from "../search/SearchBar";
+import SearchBar from "../search/SearchBar";
 import { Layout } from "../welcome/Layout";
 
 export default function About() {
     return (
         <Layout>
-            <SearchBar />
         </Layout>
     );
 }
