@@ -30,6 +30,10 @@ export function SearchBar( { updateToons } : SearchBarProps ) {
             }}
             value={currentInput}
             onChange={(e) => {setCurrentInput(e.target.value)}}
+            onKeyDown={(e) => {
+                updateToons(currentInput)
+                //if (e.key === 'Enter') updateToons(currentInput);
+            }}
             >
             </input>
             <button
