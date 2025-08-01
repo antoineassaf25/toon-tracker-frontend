@@ -7,7 +7,7 @@ import NotFoundPage from './NotFoundPage'
 import Profile from './Profile'
 
 
-import JoinRoom from './student-view/JoinRoom'
+import Search from './search/Search'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
@@ -15,7 +15,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 const router = createBrowserRouter([
   {
     path : '/',
-    element: <JoinRoom/>
+    element: <Search/>
   }
   // {
   //   path : '/',
