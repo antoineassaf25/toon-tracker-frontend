@@ -54,26 +54,20 @@ const VITE_TOON_INFO_ENDPOINT = import.meta.env.VITE_TOON_INFO_ENDPOINT;
 
 export function ToonProfile({ toonid } : ToonProfileProp) {
     const [ results, setResults ] = useState<Payload | null>(null);
-    const [ isOnline, setIsOnline ] = useState(false);
 
-    function updateOnline() {
-        setIsOnline(((new Date()).getTime() - new Date(results?.locationData.time ?? "").getTime()) / (1000 * 60 * 60) < 1.5)
-    }
 
     useEffect(() => {
         const fetchToonInfo = async function() {
-            console.log(`${VITE_TOON_INFO_ENDPOINT}/${toonid}`);
             const response = await fetch(`${VITE_TOON_INFO_ENDPOINT}/${toonid}`);
             const responseJSON : Payload = (await response.json()).payload;
     
             setResults(responseJSON);
-            console.log(responseJSON)
-            updateOnline()
         }
 
         fetchToonInfo();
     }, [])
 
+    const isOnline = ((new Date()).getTime() - new Date(results?.locationData.time ?? "").getTime()) / (1000 * 60 * 60) < 1.5
     return (
         <div
         style = {{
@@ -122,7 +116,8 @@ export function ToonProfile({ toonid } : ToonProfileProp) {
                         padding: ".15rem .5rem",
                         fontStyle: "italic",
                         fontSize: ".8rem",
-                        marginTop: '.2rem'
+                        marginTop: '.2rem',
+                        zIndex: 2
                     }}
                     >
 

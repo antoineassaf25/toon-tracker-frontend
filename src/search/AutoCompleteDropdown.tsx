@@ -2,9 +2,10 @@ import { PrefixToon } from "./SearchPage";
 
 interface AutoCompleteDropdownProps {
     toonDataJSON: PrefixToon[];
+    navigateToProfile: (id:number) => void;
 }
 
-export default function AutoCompleteDropdown({ toonDataJSON } : AutoCompleteDropdownProps) {
+export default function AutoCompleteDropdown({ toonDataJSON, navigateToProfile } : AutoCompleteDropdownProps) {
     return (
         <ul style = {{
             display: "flex",
@@ -15,7 +16,7 @@ export default function AutoCompleteDropdown({ toonDataJSON } : AutoCompleteDrop
             }}>
             {toonDataJSON.map((toon: PrefixToon, index) => (
                 <li
-                key={toon.id}
+                key={toon.toon_id}
                 style = {{
                     display: "flex",
                     flexDirection: "column"
@@ -34,7 +35,9 @@ export default function AutoCompleteDropdown({ toonDataJSON } : AutoCompleteDrop
                         boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)',
                         padding: "0 1rem"
                     }}
-                    >
+                    onClick={
+                        () => navigateToProfile(toon.toon_id)
+                    }>
                         <div style = {{color:"black"}}>
                             {`${toon.name} (${toon.laff})`}
                         </div>

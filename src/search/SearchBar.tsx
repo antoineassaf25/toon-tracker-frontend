@@ -3,9 +3,10 @@ import SearchIcon from '../assets/search-icon.png'
 
 interface SearchBarProps {
     updateToons: (prefix:string) => void;
+    navigateToProfile: () => void;
 }
 
-export default function SearchBar( { updateToons } : SearchBarProps ) {
+export default function SearchBar( { updateToons, navigateToProfile } : SearchBarProps ) {
     const [ currentInput, setCurrentInput ] = useState("")
 
     return (
@@ -32,10 +33,18 @@ export default function SearchBar( { updateToons } : SearchBarProps ) {
                 setCurrentInput(e.target.value);
                 updateToons(e.target.value);
             }} 
+            onKeyDown={(e) =>{
+                if (e.key === "Enter") {
+                    navigateToProfile()
+                }
+            }}
             >
             </input>
             <button
-            onClick={() => updateToons(currentInput)}>
+            onClick={() => {
+                updateToons(currentInput)
+                navigateToProfile()
+            }}>
                 <img src={`${SearchIcon}`} alt="Search" style={{ width: '30px', height: '30px' }} />
             </button>
         </div>

@@ -51,7 +51,6 @@ export function Suits( { stats } : { stats?: ToonStatsType } ) {
                             />)
                         }
 
-                        console.log(`toonhq.org/static/assets/cogs/${suitAndTierToCogData[suit[0]][tier].asset}`)
                         return (
                             <li key={index}
                             style = {{
@@ -71,14 +70,14 @@ export function Suits( { stats } : { stats?: ToonStatsType } ) {
                                     width: "4rem",
                                     height: "4rem"
                                 }}/>
-                                <div style = {{color: "black", fontSize: ".8rem"}}> 
+                                <div style = {{color: "black", fontSize: ".8rem", whiteSpace: 'nowrap'}}> 
                                     {suitAndTierToCogData[suit[0]][tier].name}
                                 </div>
-                                <div style = {{color: "black", fontSize: ".8rem"}}> 
+                                <div style = {{color: "black", fontSize: ".8rem", whiteSpace: 'nowrap'}}> 
                                     {suit[0].slice(0, 1).toUpperCase() + suit[0].slice(1)}
                                 </div>
-                                <div style = {{color: "black", fontSize: ".8rem"}}> 
-                                    Lvl. {level} {v2 ? "v2.0" : ""}  
+                                <div style = {{color: "black", fontSize: ".8rem", whiteSpace: 'nowrap'}}> 
+                                    Level {level} {v2 ? "v2.0" : ""}  
                                 </div>
                             </li>)
                     }

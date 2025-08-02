@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Layout } from "../welcome/Layout";
 import AutoCompleteDropdown from "./AutoCompleteDropdown";
 import SearchBar from "./SearchBar";
@@ -6,7 +7,7 @@ import SearchBar from "./SearchBar";
 const API_TOON_IDS_ENDPOINT = import.meta.env.VITE_TOON_IDS_ENDPOINT;
 
 export interface PrefixToon {
-    id: number;
+    toon_id: number;
     name: string;
     laff: number;
     photo: string;
@@ -15,7 +16,8 @@ export interface PrefixToon {
 export function SearchPage() {
 
     const [ results, setResults ] = useState<PrefixToon[]>([]);
-
+    const navigate = useNavigate();
+    
     async function updateToons(prefix: string) {
 
         if (prefix.length <= 2) {
@@ -27,6 +29,18 @@ export function SearchPage() {
         const responseJSON : PrefixToon[] = (await response.json()).payload;
 
         setResults(responseJSON);
+    }
+
+    function navigateToProfile(id = 0) {
+        if (id === 0) {
+            if (results.length > 0) {
+                navigate(`/search/${results[0].toon_id}`);
+            } else {
+                return;
+            }
+        } else {
+            navigate(`/search/${id}`)
+        }
     }
 
     return (
@@ -42,7 +56,7 @@ export function SearchPage() {
                 //marginTop: "4rem"
             }}
             >
-                <SearchBar updateToons={updateToons}/>
+                <SearchBar updateToons={updateToons} navigateToProfile={navigateToProfile}/>
 
                 <div
                 style={{
@@ -51,7 +65,7 @@ export function SearchPage() {
                     left: "-10%",
                     width: "120%"
                 }}>
-                    <AutoCompleteDropdown toonDataJSON={results}/>    
+                    <AutoCompleteDropdown toonDataJSON={results} navigateToProfile={navigateToProfile}/>    
                 </div>
                 
             </div>
