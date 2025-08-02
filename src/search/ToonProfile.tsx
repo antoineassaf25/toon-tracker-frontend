@@ -164,13 +164,13 @@ export function ToonProfile({ toonid } : ToonProfileProp) {
                 }}>
                     <div>
                         <div style = {{color: "black"}}>
-                        Last Seen: {new Date(results?.locationData.time ?? "").toLocaleString()}
+                        <strong>Last Seen:</strong> {new Date(results?.locationData.time ?? "").toLocaleString()}
                         </div>
                         <div style = {{color: "black"}}>
-                        District: {districtIdToName[results?.locationData.district ?? 0]}
+                        <strong>District:</strong>  {districtIdToName[results?.locationData.district ?? 0]}
                         </div>
                         <div style = {{color: "black"}}>
-                        Location: {locationIdToName[results?.locationData.location ?? 0]}
+                        <strong>Location:</strong>  {locationIdToName[results?.locationData.location ?? 0]}
                         </div>
                     </div>
                 </div>

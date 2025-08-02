@@ -60,7 +60,7 @@ export function Suits( { stats } : { stats?: ToonStatsType } ) {
                                 flexDirection: "column",
                                 borderRadius: "10px",
                                 backgroundColor: `rgba(${suit[1]}, .2)`,
-                                width: "6rem",
+                                width: "7rem",
                                 marginLeft: ".5rem",
                                 boxShadow: '0 10px 20px rgba(0,0,0,0.5)'
                             }}>
@@ -68,15 +68,15 @@ export function Suits( { stats } : { stats?: ToonStatsType } ) {
                                 src={`https://toonhq.org/static/assets/cogs/${suitAndTierToCogData[suit[0]][tier].asset}`}
                                 style = {{
                                     width: "4rem",
-                                    height: "4rem"
+                                    height: "4rem",
                                 }}/>
-                                <div style = {{color: "black", fontSize: ".8rem", whiteSpace: 'nowrap'}}> 
+                                <div style = {{color: "black", fontSize: ".8rem", whiteSpace: 'nowrap', fontFamily: "monospace"}}> 
                                     {suitAndTierToCogData[suit[0]][tier].name}
                                 </div>
-                                <div style = {{color: "black", fontSize: ".8rem", whiteSpace: 'nowrap'}}> 
+                                <div style = {{color: "black", fontSize: ".8rem", whiteSpace: 'nowrap', fontFamily: "monospace"}}> 
                                     {suit[0].slice(0, 1).toUpperCase() + suit[0].slice(1)}
                                 </div>
-                                <div style = {{color: "black", fontSize: ".8rem", whiteSpace: 'nowrap'}}> 
+                                <div style = {{color: "black", fontSize: ".8rem", whiteSpace: 'nowrap', fontFamily: "monospace"}}> 
                                     Level {level} {v2 ? "v2.0" : ""}  
                                 </div>
                             </li>)

@@ -10,11 +10,16 @@ export default function NavButton({ text, selected } : NavButtonProps): JSX.Elem
     return (
       <NavLink
         style = {{
-            color: selected ? "blue" : "black",
+            color: "black",
             fontFamily: 'Nunito Sans, cursive',
             fontWeight: 'bolder',
             fontSize: '20px',
-            textDecoration: selected ? 'underline' : ''
+            textDecoration: selected ? 'underline' : '',
+            display: 'flex',
+            justifyContent: "center",
+            height: '100%',
+            width: '100%',
+            alignItems: "center",
         }}
         to={`/${text.toLowerCase().replace(' ', '')}`}
         >
