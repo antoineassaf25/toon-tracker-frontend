@@ -29,15 +29,9 @@ export default function SearchBar( { updateToons } : SearchBarProps ) {
                 background: "white"
             }}
             onChange={(e) => {
-                console.log("updateToons prop:", updateToons);
                 setCurrentInput(e.target.value);
                 updateToons(e.target.value);
-            }} //{setCurrentInput(e.target.value)}}
-            // onKeyDown={(e) => {
-            //     setCurrentInput(e.target.value)
-            //     updateToons(currentInput)
-            //     //if (e.key === 'Enter') updateToons(currentInput);
-            // }}
+            }} 
             >
             </input>
             <button

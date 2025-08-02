@@ -1,4 +1,4 @@
-export const locationIdToName = {
+export const locationIdToName : Record<number, string> = {
 
     4: "Bossbot HQ",
     5: "Cashbot HQ",

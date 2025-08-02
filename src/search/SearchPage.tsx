@@ -12,7 +12,7 @@ export interface PrefixToon {
     photo: string;
 }
 
-export function Search() {
+export function SearchPage() {
 
     const [ results, setResults ] = useState<PrefixToon[]>([]);
 

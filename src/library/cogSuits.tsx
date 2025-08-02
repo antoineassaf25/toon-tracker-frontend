@@ -1,7 +1,7 @@
 
 //toonhq.org/static/assets/cogs/big_wig.png
 
-export const suitAndTierToCogData = {
+export const suitAndTierToCogData : Record<string, Record<number, {name:string, asset:string}>> = {
     "sellbot": {
         1: {
             name: "Cold Caller",

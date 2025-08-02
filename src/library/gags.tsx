@@ -1,5 +1,5 @@
 //https://toonhq.org/static/assets/gags/ttr/5_bill.png
-export const trackAndTierToGagData = {
+export const trackAndTierToGagData : Record<string, Record<number, {name : string, asset : string}>> = {
     "toonup": {
         1: {
             name: "Feather",

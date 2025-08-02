@@ -1,4 +1,4 @@
-export const districtIdToName = {
+export const districtIdToName: Record<number, string> = {
 
     36: "Blam Canyon",
     32: "Boingbury",

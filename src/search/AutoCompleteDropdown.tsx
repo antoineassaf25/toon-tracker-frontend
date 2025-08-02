@@ -1,4 +1,4 @@
-import { PrefixToon } from "./Search";
+import { PrefixToon } from "./SearchPage";
 
 interface AutoCompleteDropdownProps {
     toonDataJSON: PrefixToon[];

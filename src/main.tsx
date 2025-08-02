@@ -7,27 +7,26 @@ import NotFoundPage from './NotFoundPage'
 import Profile from './Profile'
 
 
-import { Search } from './search/Search'
+import { SearchPage } from './search/SearchPage'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import SavedToons from './savedtoons/SavedToons'
 import About from './about/About'
+import ToonProfilePage from './search/ToonProfilePage'
 
 
 const router = createBrowserRouter([
   {
     path : '/',
-    element: <Search/>
+    element: <SearchPage/>
   },
   {
     path : '/search',
-    element: <Search/>,
-    children: [
-      {
-        path: '/search/:toonId',
-        element : <Profile />
-      }
-    ]
+    element: <SearchPage/>,
+  },
+  {
+    path : '/search/:toonid',
+    element: <ToonProfilePage/>,
   },
   {
     path : '/savedtoons',
